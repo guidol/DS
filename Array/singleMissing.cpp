@@ -51,10 +51,15 @@ template<class T>
  }
 
  int main(){
-        Array<int> arr(10);
+       /*  Array<int> arr(10);
         arr.Insert(0,5);
         arr.Insert(1,6);
         arr.Insert(2,9);
+        arr.Display(); */
+        Array<float> arr(10);
+        arr.Insert(0,5.2);
+        arr.Insert(1,6.4);
+        arr.Insert(2,9.5);
         arr.Display();
         cout<<arr.Delete(0)<<endl;
         arr.Display();
