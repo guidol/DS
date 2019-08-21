@@ -4,6 +4,7 @@ template<class T>
 class Array{
     private:
         T *A;
+        T *Hash;
         int size;
         int length;
     public:
@@ -15,14 +16,21 @@ class Array{
     Array(int sz){
         size = sz;
         A = new T[sz];
-        length = 0;
+        Hash = new T[21];
+        for(int i=0; i < 21; i++){
+            Hash[i]=0;
+            length = 0;
+        }
+        
     }
     ~Array(){
         delete []A;
+        delete []Hash;
     }
     void Display();
     void Insert(int index, T x);
     T Delete(int index);
+    void FindDuplicate();
 };
 template<class T>
  void Array<T>::Display(){
@@ -49,20 +57,38 @@ template<class T>
      }
      return x;
  }
+ template<class T>
+ void Array<T>::FindDuplicate(){
+     for(int i=0; i<length ; i++){
+         Hash[A[i]]++;
+         //cout<< A[i];
+     }
+     for(int i=0; i<=20 ; i++){
+        if(Hash[i] > 1){
+            cout<< i <<":";
+            cout<< Hash[i] << " ";     
+        }                 
+      }
+ }
 
  int main(){
-       /*  Array<int> arr(10);
-        arr.Insert(0,5);
+        Array<int> arr(10);
+        arr.Insert(0,3);
         arr.Insert(1,6);
-        arr.Insert(2,9);
-        arr.Display(); */
-        Array<float> arr(10);
-        arr.Insert(0,5.2);
-        arr.Insert(1,6.4);
-        arr.Insert(2,9.5);
+        arr.Insert(2,8);
+        arr.Insert(3,8);
+        arr.Insert(4,10);
+        arr.Insert(5,12);
+        arr.Insert(6,15);
+        arr.Insert(7,15);
+        arr.Insert(8,15);
+        arr.Insert(9,20);
+        
         arr.Display();
-        cout<<arr.Delete(0)<<endl;
-        arr.Display();
+        
+        //cout<<arr.Delete(0)<<endl;
+        arr.FindDuplicate();
+        //arr.Display();
     
     return 0;
  }
