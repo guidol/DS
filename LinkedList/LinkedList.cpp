@@ -9,13 +9,16 @@ class Node{
 class LinkedList{
     private:
         Node *first;
+        // for testing Private function.
     public:
         LinkedList(){first=NULL;}
         LinkedList(int A[], int n);
         ~LinkedList();
         void Display();
         void Rdisplay(Node *p);
-        void CallRecursive();
+        void Callfunction();
+        void ReverseLinkedList(Node *p); 
+        
         //void Insert();
 };
 LinkedList::LinkedList(int A[], int n){
@@ -57,15 +60,29 @@ void LinkedList::Rdisplay(Node *p){
         
     }   
 }
-void LinkedList::CallRecursive(){
-     LinkedList::Rdisplay(first);
+void LinkedList::Callfunction(){
+     //LinkedList::Rdisplay(first);
+     LinkedList::ReverseLinkedList(first);
+    // LinkedList::Rdisplay(first);
+}
+
+void LinkedList::ReverseLinkedList(Node *p){
+    Node *q = NULL;
+    Node *r = NULL;
+        while(p != NULL){
+            r = q;
+            q = p;
+            p = p->next;
+            q->next = r;
+        }first = q;    
 }
 int main(){
     
     int A[]={1,2,3,4,5};
     LinkedList linkl(A,5);
-    linkl.CallRecursive();
-    //linkl.Display();
+    linkl.Callfunction();
+    
+    linkl.Display();
 
     return 0;
 }
