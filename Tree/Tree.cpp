@@ -82,7 +82,7 @@ int main(){
     t.PreOrder(t.root);
     cout<<endl;
     cout<<"Inorder "<<endl;
-    t.InOrder(t.root);10
+    t.InOrder(t.root);
     cout<<endl<<endl;
 
     return 0;
