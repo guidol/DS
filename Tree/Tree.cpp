@@ -70,7 +70,21 @@ void Tree::InOrder(Node *p){
     }
 }
 void Tree::LevelOrder(Node* p){
-    //make it later
+    
+    Queue q(100);
+    cout<<p->data<<endl;
+    q.enqueue(p);
+    while(!q.isEmpty()){
+       p = q.dequeue();
+        if(p->leftchild){
+            cout<<p->leftchild->data<<endl;
+            q.enqueue(p->leftchild);
+        }
+        if(p->rightchild){
+            cout<<p->rightchild->data<<endl;
+            q.enqueue(p->rightchild);
+        }
+    }
 }
 // void Tree::Height(Node* p){
 //     //make it later
@@ -83,6 +97,12 @@ int main(){
     cout<<endl;
     cout<<"Inorder "<<endl;
     t.InOrder(t.root);
+    cout<<endl<<endl;
+    cout<<"PostOrder "<<endl;
+    t.PostOrder(t.root);
+    cout<<endl<<endl;
+    cout<<"LevelOrder "<<endl;
+    t.LevelOrder(t.root);
     cout<<endl<<endl;
 
     return 0;
