@@ -4,6 +4,7 @@ using namespace std;
 class sorting{
        public:
             void BubbleSort(int a[], int n);
+            void InsertionSort(int a[], int n);
             void swap(int *x, int *y);
 };
 void sorting::swap(int *x, int *y){
@@ -29,11 +30,24 @@ void sorting::BubbleSort(int a[], int n){
                  break;
          }
 }
+void sorting::InsertionSort(int a[], int n){
+    int i,j,x=0;
+    for(i = 1; i < n; i++){
+        j = i - 1;
+        x = a[i];
+        while(j > -1 && a[j] > x){
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j+1] = x;
+    }
+}
 int main(){
     int A[10] = {3,7,9,10,6,5,12,4,11,2};
 
     sorting srt;
-    srt.BubbleSort(A,10);
+    //srt.BubbleSort(A,10);
+    srt.InsertionSort(A,10);
     for(int i=0 ; i < 10 ; i++)
         cout<<" "<<A[i];
     cout<<endl;
